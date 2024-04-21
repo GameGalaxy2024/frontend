@@ -1,0 +1,54 @@
+
+<div class="flex min-h-full">
+  <div class="flex flex-1 flex-col justify-center px-4 py-6 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="mx-auto w-full max-w-sm lg:w-96 -mt-20">
+      <div>
+        <img class="h-full w-auto max-h-56 max-w-56 mx-auto lg:hidden block" src="assets/images/logo.png" alt="Your Company">
+        <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">Regístrate y disfruta de nuestros productos</h2>
+        <p class="mt-2 text-sm leading-6 text-gray-500">
+          ¿Ya tienes cuenta?
+          <a routerLink="/auth/login" class="font-semibold text-[#1B1280] hover:text-[#120c55]">Iniciar sesión</a>
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <div>
+          <span  class="text-red-500 text-xs font-semibold">{{errMessage}}</span>
+          <div  class="space-y-6">
+            <div>
+              <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Usuario*</label>
+              <div class="mt-2">
+                <input id="username" [(ngModel)]="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#1B1280] sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Correo electrónico*</label>
+              <div class="mt-2">
+                <input id="email" [(ngModel)]="email" (keyup)="validateEmail()" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#1B1280] sm:text-sm sm:leading-6">
+                <span *ngIf="!validEmail && email.length" class="text-red-500 text-xs font-semibold">Correo inválido</span>
+              </div>
+            </div>
+            <div>
+              <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña*</label>
+              <div class="mt-2">
+                <input [(ngModel)]="password"  id="password" name="password" [type]="showPassword ? 'text': 'password'" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#1B1280] sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input id="remember-me" [(ngModel)]="showPassword" value=true name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-[#1B1280] focus:ring-[#1B1280]">
+                <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-700">Ver contraseña</label>
+              </div>
+            </div>
+            <div>
+              <button [disabled]="!validEmail || !email.length || !username.length || !password.length || loading"  [ngClass]="{'cursor-progress': loading}" (click)="register()" type="button" class="disabled:opacity-70 flex w-full justify-center rounded-md bg-[#1B1280] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#1B1280] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1B1280]">Ingresar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative hidden w-0 flex-1 lg:block">
+    <img class="absolute inset-0 h-full w-full object-cover" src="assets/images/login-banner.png" alt="">
+  </div>
+</div>
