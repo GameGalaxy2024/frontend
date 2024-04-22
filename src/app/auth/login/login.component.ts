@@ -8,12 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  // current user
   //     cuelloroyoj@gmail.com
   //   demodemo123
-  public email:string = 'admin@gmail.com';
+
+  //  admin user
+  // admin@gmail.com
+  // admin
+  public email:string = '';
   public errMessage:string = '';
   public loading:boolean = false;
-  public password:string = 'admin';
+  public password:string = '';
   public showPassword:boolean = false;
 
   constructor(private authSvc:AuthService, private router:Router){}
