@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
   public isAdmin:boolean = false;
-
+  public showMobileMenu:boolean = false;
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
